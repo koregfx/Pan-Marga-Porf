@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'pan-marga';
   pass = 'pan';
-  contra: string;
+  contra: string = 'pan';
   constructor(){
     ;
   }
