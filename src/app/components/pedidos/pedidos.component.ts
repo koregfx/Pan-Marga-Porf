@@ -38,7 +38,7 @@ export class PedidosComponent {
   deletePedido(pedido: Pedido): void {
     Swal.fire({
       title: 'Estas Segura Margarita?',
-      text: `Estas segura de borrar el pedido de ${pedido.nombre}`,
+      text: `Estas segura de borrar el pedido ${pedido.pedidoId} de ${pedido.nombre}`,
       showConfirmButton: true,
       showCancelButton:true,
       confirmButtonColor: '#3085d6',
