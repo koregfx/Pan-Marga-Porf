@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class PedidosService {
   private productos: Producto[] = [];
-  private url = 'https://pan-marga-api.herokuapp.com';
+  private url = 'https://peaceful-garden-78030.herokuapp.com';
   private pedidoActual: Pedido = {};
   private respuesta: any = {};
   constructor(private http: HttpClient) {
