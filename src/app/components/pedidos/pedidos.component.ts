@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { Component } from '@angular/core';
 import {
   Producto,
@@ -35,10 +36,26 @@ export class PedidosComponent {
     });
   }
   deletePedido(pedido: Pedido): void {
-    this._pedidosService.delete('/pedido', pedido).subscribe((data) => {
-      this._pedidosService.get('/pedido').subscribe((pedidos) => {
-        this.pedidos = pedidos.pedidos;
-      });
+    Swal.fire({
+      title: 'Estas Segura Margarita?',
+      text: `Estas segura de borrar el pedido de ${pedido.nombre}`,
+      showConfirmButton: true,
+      showCancelButton:true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
+      background:'#aeaeae',
+    }
+    ).then(resp=>{
+      if(resp.isConfirmed)
+      {
+        this._pedidosService.delete('/pedido', pedido).subscribe((data) => {
+          this._pedidosService.get('/pedido').subscribe((pedidos) => {
+            this.pedidos = pedidos.pedidos;
+          });
+        })
+      }
     });
   }
   buscarPorFecha(date: string): void {
